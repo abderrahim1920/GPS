@@ -31,12 +31,13 @@ namespace GPS
             var services = new ServiceCollection();
 
             ConfigureServices(services);
-            //using (ServiceProvider serviceProvider = services.BuildServiceProvider())
-            //{
-            //    var form1 = serviceProvider.GetRequiredService<Form1>();
-            //    Application.Run(form1);
-            //}
-            Application.Run(new MainForm());
+
+            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            {
+                var form = serviceProvider.GetRequiredService<MainForm>();
+                Application.Run(form);
+            }
+            
         }
 
         private static void ConfigureServices(ServiceCollection services)
@@ -48,7 +49,9 @@ namespace GPS
             services.AddScoped<IPaiementRepository, PaiementRepository>();
 
             services.AddScoped<Form1>();
-            
+            services.AddScoped<MainForm>();
+            services.AddTransient<AddForm>();
+
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
         }
     }

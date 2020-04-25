@@ -1,4 +1,10 @@
-﻿using FontAwesome.Sharp;
+﻿using AutoMapper;
+using FontAwesome.Sharp;
+using GPS.Context;
+using GPS.Services.ClientServices;
+using GPS.Services.PaiementService;
+using GPS.Services.TraceServices;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,11 +23,13 @@ namespace GPS.Forms
         private IconButton currentBtn;
         private Panel leftBorderBtn;
         private Form currentChildForm;
-        public MainForm()
+        private readonly IServiceProvider _serviceProvider;
+        public MainForm(IServiceProvider serviceProvider)
         {
             InitializeComponent();
+            _serviceProvider = serviceProvider;
             leftBorderBtn = new Panel();
-            leftBorderBtn.Size = new Size(7, 75);
+            leftBorderBtn.Size = new Size(7, 61);
             panelMenu.Controls.Add(leftBorderBtn);
 
             //Form
@@ -100,10 +108,15 @@ namespace GPS.Forms
 
         }
 
+       
+
         private void addButton_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChildForm(new AddForm());
+            var form = _serviceProvider.GetRequiredService<AddForm>();
+            OpenChildForm(form);
+          
+
         }
 
         private void PaymentButton_Click(object sender, EventArgs e)
