@@ -49,9 +49,23 @@
             this.iMEITextBox = new MetroFramework.Controls.MetroTextBox();
             this.traceNumberTextBox = new MetroFramework.Controls.MetroTextBox();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
-            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderLogin = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPhoneNumber = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCity = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderTraceName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderIMEI = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderCreationDate = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderTraceNumber = new System.Windows.Forms.ErrorProvider(this.components);
             this.tableLayoutPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLogin)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTraceName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIMEI)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCreationDate)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTraceNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -97,6 +111,7 @@
             // 
             // renewDateTime
             // 
+            this.renewDateTime.Enabled = false;
             this.renewDateTime.Location = new System.Drawing.Point(232, 395);
             this.renewDateTime.MinimumSize = new System.Drawing.Size(0, 29);
             this.renewDateTime.Name = "renewDateTime";
@@ -122,6 +137,8 @@
             this.creationDateTime.Name = "creationDateTime";
             this.creationDateTime.Size = new System.Drawing.Size(377, 29);
             this.creationDateTime.TabIndex = 2;
+            this.creationDateTime.ValueChanged += new System.EventHandler(this.creationDateTime_ValueChanged);
+            this.creationDateTime.Validating += new System.ComponentModel.CancelEventHandler(this.creationDateTime_Validating);
             // 
             // label8
             // 
@@ -215,6 +232,7 @@
             this.traceNameTextBox.UseSelectable = true;
             this.traceNameTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.traceNameTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.traceNameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.traceNameTextBox_Validating);
             // 
             // loginTextBox
             // 
@@ -286,6 +304,7 @@
             this.NameTextBox.UseSelectable = true;
             this.NameTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.NameTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 25.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NameTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameTextBox_Validating);
             // 
             // label1
             // 
@@ -355,6 +374,7 @@
             this.phoneNumberTextBox.UseSelectable = true;
             this.phoneNumberTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.phoneNumberTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.phoneNumberTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.phoneNumberTextBox_Validating);
             // 
             // cityTextBox
             // 
@@ -388,6 +408,7 @@
             this.cityTextBox.UseSelectable = true;
             this.cityTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.cityTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.cityTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.cityTextBox_Validating);
             // 
             // iMEITextBox
             // 
@@ -421,6 +442,7 @@
             this.iMEITextBox.UseSelectable = true;
             this.iMEITextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.iMEITextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.iMEITextBox.Validating += new System.ComponentModel.CancelEventHandler(this.iMEITextBox_Validating);
             // 
             // traceNumberTextBox
             // 
@@ -454,6 +476,7 @@
             this.traceNumberTextBox.UseSelectable = true;
             this.traceNumberTextBox.WaterMarkColor = System.Drawing.Color.FromArgb(((int)(((byte)(109)))), ((int)(((byte)(109)))), ((int)(((byte)(109)))));
             this.traceNumberTextBox.WaterMarkFont = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Pixel);
+            this.traceNumberTextBox.Validating += new System.ComponentModel.CancelEventHandler(this.traceNumberTextBox_Validating);
             // 
             // iconButton1
             // 
@@ -479,9 +502,37 @@
             this.iconButton1.UseVisualStyleBackColor = false;
             this.iconButton1.Click += new System.EventHandler(this.iconButton1_Click);
             // 
-            // errorProvider
+            // errorProviderLogin
             // 
-            this.errorProvider.ContainerControl = this;
+            this.errorProviderLogin.ContainerControl = this;
+            // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderPhoneNumber
+            // 
+            this.errorProviderPhoneNumber.ContainerControl = this;
+            // 
+            // errorProviderCity
+            // 
+            this.errorProviderCity.ContainerControl = this;
+            // 
+            // errorProviderTraceName
+            // 
+            this.errorProviderTraceName.ContainerControl = this;
+            // 
+            // errorProviderIMEI
+            // 
+            this.errorProviderIMEI.ContainerControl = this;
+            // 
+            // errorProviderCreationDate
+            // 
+            this.errorProviderCreationDate.ContainerControl = this;
+            // 
+            // errorProviderTraceNumber
+            // 
+            this.errorProviderTraceNumber.ContainerControl = this;
             // 
             // AddForm
             // 
@@ -495,7 +546,14 @@
             this.Text = "AddForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLogin)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTraceName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderIMEI)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderCreationDate)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderTraceNumber)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -522,6 +580,13 @@
         private System.Windows.Forms.Label label9;
         private MetroFramework.Controls.MetroDateTime renewDateTime;
         private MetroFramework.Controls.MetroDateTime creationDateTime;
-        private System.Windows.Forms.ErrorProvider errorProvider;
+        private System.Windows.Forms.ErrorProvider errorProviderLogin;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderPhoneNumber;
+        private System.Windows.Forms.ErrorProvider errorProviderCity;
+        private System.Windows.Forms.ErrorProvider errorProviderTraceName;
+        private System.Windows.Forms.ErrorProvider errorProviderIMEI;
+        private System.Windows.Forms.ErrorProvider errorProviderCreationDate;
+        private System.Windows.Forms.ErrorProvider errorProviderTraceNumber;
     }
 }

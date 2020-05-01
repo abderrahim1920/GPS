@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Extensions.DependencyInjection;
 using GPS.Context;
-using GPS.Services.TraceServices;
 using GPS.Services.PaiementService;
 using GPS.Forms;
+using System.Data;
+using GPS.Services.TraceServices;
 
 namespace GPS
 {
     static class Program
     {
-        private static Container container;
         /// <summary>
         /// Point d'entrée principal de l'application.
         /// </summary>
@@ -32,12 +32,21 @@ namespace GPS
 
             ConfigureServices(services);
 
-            using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+            if (CheckConnection())
             {
-                var form = serviceProvider.GetRequiredService<MainForm>();
-                Application.Run(form);
+                using (ServiceProvider serviceProvider = services.BuildServiceProvider())
+                {
+                    var form = serviceProvider.GetRequiredService<MainForm>();
+                    Application.Run(form);
+                }
             }
-            
+            else
+            {
+                Application.Exit();
+            }
+
+
+
         }
 
         private static void ConfigureServices(ServiceCollection services)
@@ -45,14 +54,37 @@ namespace GPS
             services.AddScoped<GPSContext>();
 
             services.AddScoped<IClientRepository, ClientRepository>();
-            services.AddScoped<ITracerepository, Tracerepository>();
+            //services.AddScoped<ITraceRepository, TraceRepository>();
+            services.AddScoped<ITraceRepository, TraceRepository>();
             services.AddScoped<IPaiementRepository, PaiementRepository>();
 
             services.AddScoped<Form1>();
             services.AddScoped<MainForm>();
             services.AddTransient<AddForm>();
-
+            services.AddTransient<PaymentForm>();
+            services.AddTransient<ClientForm>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        }
+
+        private static bool CheckConnection()
+        {
+            using (var db = new GPSContext())
+            {
+                try
+                {
+                    db.Database.Connection.Open();
+                }
+                catch (Exception)
+                {
+                    var state = db.Database.Connection.State;
+                    if (state == ConnectionState.Closed)
+                    {
+                        MessageBox.Show("Vérifier la connection avec la base de donnée", "DB Connection", MessageBoxButtons.OK);
+                        return false;
+                    }
+                }
+                return true;
+            }
         }
     }
 }

@@ -19,9 +19,9 @@ namespace GPS.Forms
     {
         private readonly IMapper _mapper;
         private readonly IClientRepository _clientRepository;
-        private readonly ITracerepository _tracerepository;
+        private readonly Services.TraceServices.ITraceRepository _tracerepository;
 
-        public AddForm(IMapper mapper, IClientRepository clientRepository, ITracerepository tracerepository)
+        public AddForm(IMapper mapper, IClientRepository clientRepository, Services.TraceServices.ITraceRepository tracerepository)
         {
             InitializeComponent();
             _mapper = mapper;
@@ -57,21 +57,130 @@ namespace GPS.Forms
             }
         }
 
+        private void creationDateTime_ValueChanged(object sender, EventArgs e)
+        {
+            renewDateTime.Value = creationDateTime.Value.AddDays(365);
+        }
+
+        #region validation
         private void loginTextBox_Validating(object sender, CancelEventArgs e)
         {
             if (string.IsNullOrEmpty(loginTextBox.Text))
             {
-                errorProvider.SetError(loginTextBox, "Champ obligatoire");
-            }
-            else if (loginTextBox.Text.Length != 15)
-            {
-                errorProvider.SetError(loginTextBox, "15 caractères");
+                e.Cancel = true;
+                errorProviderLogin.SetError(loginTextBox, "Champ obligatoire");
             }
             else
             {
                 e.Cancel = false;
-                errorProvider.SetError(loginTextBox, null);
+                errorProviderLogin.SetError(loginTextBox, null);
             }
         }
+
+        private void NameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(NameTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderName.SetError(NameTextBox, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderName.SetError(NameTextBox, null);
+            }
+        }
+
+        private void phoneNumberTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(phoneNumberTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderPhoneNumber.SetError(phoneNumberTextBox, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderPhoneNumber.SetError(phoneNumberTextBox, null);
+            }
+        }
+
+        private void cityTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(cityTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderCity.SetError(cityTextBox, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCity.SetError(cityTextBox, null);
+            }
+        }
+
+        private void traceNameTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(traceNameTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderTraceName.SetError(traceNameTextBox, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderTraceName.SetError(traceNameTextBox, null);
+            }
+        }
+
+        private void iMEITextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(iMEITextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderIMEI.SetError(iMEITextBox, "Champ obligatoire");
+            }
+            else if (loginTextBox.Text.Length != 15)
+            {
+                e.Cancel = true;
+                errorProviderIMEI.SetError(iMEITextBox, "15 caractères");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderIMEI.SetError(iMEITextBox, null);
+            }
+        }
+
+        private void traceNumberTextBox_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(traceNumberTextBox.Text))
+            {
+                e.Cancel = true;
+                errorProviderTraceNumber.SetError(traceNumberTextBox, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderTraceNumber.SetError(traceNumberTextBox, null);
+            }
+        }
+
+        private void creationDateTime_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrEmpty(creationDateTime.Text))
+            {
+                e.Cancel = true;
+                errorProviderCreationDate.SetError(creationDateTime, "Champ obligatoire");
+            }
+            else
+            {
+                e.Cancel = false;
+                errorProviderCreationDate.SetError(creationDateTime, null);
+            }
+        }
+
+        #endregion
+
     }
 }

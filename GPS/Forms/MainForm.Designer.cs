@@ -31,7 +31,7 @@ namespace GPS.Forms
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.iconButton4 = new FontAwesome.Sharp.IconButton();
+            this.clientsButton = new FontAwesome.Sharp.IconButton();
             this.NotificationsButton = new FontAwesome.Sharp.IconButton();
             this.PaymentButton = new FontAwesome.Sharp.IconButton();
             this.addButton = new FontAwesome.Sharp.IconButton();
@@ -52,40 +52,39 @@ namespace GPS.Forms
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
-            this.panelMenu.Controls.Add(this.iconButton4);
+            this.panelMenu.Controls.Add(this.clientsButton);
             this.panelMenu.Controls.Add(this.NotificationsButton);
             this.panelMenu.Controls.Add(this.PaymentButton);
             this.panelMenu.Controls.Add(this.addButton);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
-            this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(242, 796);
+            this.panelMenu.Size = new System.Drawing.Size(207, 756);
             this.panelMenu.TabIndex = 0;
             // 
-            // iconButton4
+            // clientsButton
             // 
-            this.iconButton4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton4.FlatAppearance.BorderSize = 0;
-            this.iconButton4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton4.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
-            this.iconButton4.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.iconButton4.IconChar = FontAwesome.Sharp.IconChar.DollarSign;
-            this.iconButton4.IconColor = System.Drawing.Color.Gainsboro;
-            this.iconButton4.IconSize = 32;
-            this.iconButton4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.Location = new System.Drawing.Point(0, 388);
-            this.iconButton4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.iconButton4.Name = "iconButton4";
-            this.iconButton4.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
-            this.iconButton4.Rotation = 0D;
-            this.iconButton4.Size = new System.Drawing.Size(242, 74);
-            this.iconButton4.TabIndex = 4;
-            this.iconButton4.Text = "iconButton4";
-            this.iconButton4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton4.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton4.UseVisualStyleBackColor = true;
+            this.clientsButton.Dock = System.Windows.Forms.DockStyle.Top;
+            this.clientsButton.FlatAppearance.BorderSize = 0;
+            this.clientsButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.clientsButton.Flip = FontAwesome.Sharp.FlipOrientation.Normal;
+            this.clientsButton.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.clientsButton.IconChar = FontAwesome.Sharp.IconChar.User;
+            this.clientsButton.IconColor = System.Drawing.Color.Gainsboro;
+            this.clientsButton.IconSize = 32;
+            this.clientsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientsButton.Location = new System.Drawing.Point(0, 315);
+            this.clientsButton.Name = "clientsButton";
+            this.clientsButton.Padding = new System.Windows.Forms.Padding(9, 0, 17, 0);
+            this.clientsButton.Rotation = 0D;
+            this.clientsButton.Size = new System.Drawing.Size(207, 60);
+            this.clientsButton.TabIndex = 4;
+            this.clientsButton.Text = "Clients";
+            this.clientsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.clientsButton.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.clientsButton.UseVisualStyleBackColor = true;
+            this.clientsButton.Click += new System.EventHandler(this.clientsButton_Click);
             // 
             // NotificationsButton
             // 
@@ -98,12 +97,11 @@ namespace GPS.Forms
             this.NotificationsButton.IconColor = System.Drawing.Color.Gainsboro;
             this.NotificationsButton.IconSize = 32;
             this.NotificationsButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.NotificationsButton.Location = new System.Drawing.Point(0, 313);
-            this.NotificationsButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.NotificationsButton.Location = new System.Drawing.Point(0, 254);
             this.NotificationsButton.Name = "NotificationsButton";
-            this.NotificationsButton.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.NotificationsButton.Padding = new System.Windows.Forms.Padding(9, 0, 17, 0);
             this.NotificationsButton.Rotation = 0D;
-            this.NotificationsButton.Size = new System.Drawing.Size(242, 75);
+            this.NotificationsButton.Size = new System.Drawing.Size(207, 61);
             this.NotificationsButton.TabIndex = 3;
             this.NotificationsButton.Text = "Notifications";
             this.NotificationsButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -122,12 +120,11 @@ namespace GPS.Forms
             this.PaymentButton.IconColor = System.Drawing.Color.Gainsboro;
             this.PaymentButton.IconSize = 32;
             this.PaymentButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.PaymentButton.Location = new System.Drawing.Point(0, 238);
-            this.PaymentButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.PaymentButton.Location = new System.Drawing.Point(0, 193);
             this.PaymentButton.Name = "PaymentButton";
-            this.PaymentButton.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.PaymentButton.Padding = new System.Windows.Forms.Padding(9, 0, 17, 0);
             this.PaymentButton.Rotation = 0D;
-            this.PaymentButton.Size = new System.Drawing.Size(242, 75);
+            this.PaymentButton.Size = new System.Drawing.Size(207, 61);
             this.PaymentButton.TabIndex = 2;
             this.PaymentButton.Text = "Paiements";
             this.PaymentButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -146,12 +143,11 @@ namespace GPS.Forms
             this.addButton.IconColor = System.Drawing.Color.Gainsboro;
             this.addButton.IconSize = 32;
             this.addButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.addButton.Location = new System.Drawing.Point(0, 163);
-            this.addButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.addButton.Location = new System.Drawing.Point(0, 132);
             this.addButton.Name = "addButton";
-            this.addButton.Padding = new System.Windows.Forms.Padding(10, 0, 20, 0);
+            this.addButton.Padding = new System.Windows.Forms.Padding(9, 0, 17, 0);
             this.addButton.Rotation = 0D;
-            this.addButton.Size = new System.Drawing.Size(242, 75);
+            this.addButton.Size = new System.Drawing.Size(207, 61);
             this.addButton.TabIndex = 1;
             this.addButton.Text = "Ajouter";
             this.addButton.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -164,17 +160,17 @@ namespace GPS.Forms
             this.panelLogo.Controls.Add(this.HomeButton);
             this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(242, 163);
+            this.panelLogo.Size = new System.Drawing.Size(207, 132);
             this.panelLogo.TabIndex = 1;
             // 
             // HomeButton
             // 
             this.HomeButton.Image = global::GPS.Properties.Resources.xls;
-            this.HomeButton.Location = new System.Drawing.Point(23, 24);
+            this.HomeButton.Location = new System.Drawing.Point(20, 20);
+            this.HomeButton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.HomeButton.Name = "HomeButton";
-            this.HomeButton.Size = new System.Drawing.Size(194, 108);
+            this.HomeButton.Size = new System.Drawing.Size(166, 88);
             this.HomeButton.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.HomeButton.TabIndex = 1;
             this.HomeButton.TabStop = false;
@@ -186,9 +182,10 @@ namespace GPS.Forms
             this.panelTitleBar.Controls.Add(this.labelTitleChildForm);
             this.panelTitleBar.Controls.Add(this.IconCurrentChildForm);
             this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelTitleBar.Location = new System.Drawing.Point(242, 0);
+            this.panelTitleBar.Location = new System.Drawing.Point(207, 0);
+            this.panelTitleBar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(200, 60);
+            this.panelTitleBar.Size = new System.Drawing.Size(1074, 49);
             this.panelTitleBar.TabIndex = 1;
             this.panelTitleBar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelTitleBar_MouseDown);
             // 
@@ -196,9 +193,9 @@ namespace GPS.Forms
             // 
             this.labelTitleChildForm.AutoSize = true;
             this.labelTitleChildForm.ForeColor = System.Drawing.Color.MediumPurple;
-            this.labelTitleChildForm.Location = new System.Drawing.Point(63, 24);
+            this.labelTitleChildForm.Location = new System.Drawing.Point(54, 20);
             this.labelTitleChildForm.Name = "labelTitleChildForm";
-            this.labelTitleChildForm.Size = new System.Drawing.Size(44, 17);
+            this.labelTitleChildForm.Size = new System.Drawing.Size(34, 13);
             this.labelTitleChildForm.TabIndex = 1;
             this.labelTitleChildForm.Text = "Home";
             // 
@@ -208,9 +205,11 @@ namespace GPS.Forms
             this.IconCurrentChildForm.ForeColor = System.Drawing.SystemColors.MenuHighlight;
             this.IconCurrentChildForm.IconChar = FontAwesome.Sharp.IconChar.Home;
             this.IconCurrentChildForm.IconColor = System.Drawing.SystemColors.MenuHighlight;
-            this.IconCurrentChildForm.Location = new System.Drawing.Point(22, 17);
+            this.IconCurrentChildForm.IconSize = 26;
+            this.IconCurrentChildForm.Location = new System.Drawing.Point(19, 14);
+            this.IconCurrentChildForm.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.IconCurrentChildForm.Name = "IconCurrentChildForm";
-            this.IconCurrentChildForm.Size = new System.Drawing.Size(168, 32);
+            this.IconCurrentChildForm.Size = new System.Drawing.Size(144, 26);
             this.IconCurrentChildForm.TabIndex = 0;
             this.IconCurrentChildForm.TabStop = false;
             // 
@@ -218,33 +217,34 @@ namespace GPS.Forms
             // 
             this.panelShadow.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(25)))), ((int)(((byte)(62)))));
             this.panelShadow.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelShadow.Location = new System.Drawing.Point(242, 500);
+            this.panelShadow.Location = new System.Drawing.Point(207, 49);
+            this.panelShadow.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelShadow.Name = "panelShadow";
-            this.panelShadow.Size = new System.Drawing.Size(1060, 9);
+            this.panelShadow.Size = new System.Drawing.Size(1074, 7);
             this.panelShadow.TabIndex = 2;
             // 
             // panelDesktop
             // 
             this.panelDesktop.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(33)))), ((int)(((byte)(74)))));
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktop.Location = new System.Drawing.Point(242, 509);
+            this.panelDesktop.Location = new System.Drawing.Point(207, 56);
+            this.panelDesktop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1060, 287);
+            this.panelDesktop.Size = new System.Drawing.Size(1074, 700);
             this.panelDesktop.TabIndex = 3;
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1302, 796);
+            this.ClientSize = new System.Drawing.Size(1281, 756);
             this.Controls.Add(this.panelDesktop);
             this.Controls.Add(this.panelShadow);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.MinimumSize = new System.Drawing.Size(1302, 796);
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.MinimumSize = new System.Drawing.Size(1118, 654);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.panelMenu.ResumeLayout(false);
             this.panelLogo.ResumeLayout(false);
@@ -263,7 +263,7 @@ namespace GPS.Forms
         private FontAwesome.Sharp.IconButton addButton;
         private FontAwesome.Sharp.IconButton NotificationsButton;
         private FontAwesome.Sharp.IconButton PaymentButton;
-        private FontAwesome.Sharp.IconButton iconButton4;
+        private FontAwesome.Sharp.IconButton clientsButton;
         private System.Windows.Forms.PictureBox HomeButton;
         private System.Windows.Forms.Panel panelTitleBar;
         private FontAwesome.Sharp.IconPictureBox IconCurrentChildForm;

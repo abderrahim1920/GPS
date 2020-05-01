@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GPS.Services.TraceServices
 {
-    public class Tracerepository : ITracerepository
+    public class TraceRepository : ITraceRepository
     {
         private readonly GPSContext _context;
 
-        public Tracerepository(GPSContext gPSContext)
+        public TraceRepository(GPSContext gPSContext)
         {
             _context = gPSContext;
         }

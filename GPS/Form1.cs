@@ -23,11 +23,11 @@ namespace GPS
     {
         private readonly IMapper _mapper;
         private readonly IClientRepository _clientRepository;
-        private readonly ITracerepository _tracerepository;
+        private readonly ITraceRepository _tracerepository;
         private readonly IPaiementRepository _paiementRepository;
 
 
-        public Form1(IMapper mapper, IClientRepository clientRepository, ITracerepository tracerepository, IPaiementRepository paiementRepository)
+        public Form1(IMapper mapper, IClientRepository clientRepository, ITraceRepository tracerepository, IPaiementRepository paiementRepository)
         {
             InitializeComponent();
             _mapper = mapper;
@@ -107,6 +107,7 @@ namespace GPS
             }
             var j = dataList;
             dgv.DataSource = dataList;
+
             var y = 0;
         }
 

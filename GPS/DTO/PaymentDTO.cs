@@ -17,6 +17,6 @@ namespace GPS.DTO
         public bool Payee { get; set; }
         [Required]
         public int TraceId { get; set; }
-        public Trace Trace { get; set; }
+        public TraceDTO Trace { get; set; }
     }
 }

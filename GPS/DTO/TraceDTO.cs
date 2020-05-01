@@ -23,5 +23,6 @@ namespace GPS.DTO
         [Required]
         public DateTime RenewDate { get; set; }
         public int ClientId { get; set; }
+        public ClientDTO Client { get; set; }
     }
 }

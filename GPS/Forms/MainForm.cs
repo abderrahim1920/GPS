@@ -122,13 +122,21 @@ namespace GPS.Forms
         private void PaymentButton_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color2);
-            OpenChildForm(new PaymentForm());
+            var form = _serviceProvider.GetRequiredService<PaymentForm>();
+            OpenChildForm(form);
         }
 
         private void NotificationsButton_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color3);
             OpenChildForm(new NotificationsForm());
+        }
+
+        private void clientsButton_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            var form = _serviceProvider.GetRequiredService<ClientForm>();
+            OpenChildForm(form);
         }
 
         private void HomeButton_Click(object sender, EventArgs e)
@@ -156,5 +164,7 @@ namespace GPS.Forms
             ReleaseCapture();
             SendMessage(this.Handle, 0x112, 0xf012, 0);
         }
+
+       
     }
 }

@@ -10,7 +10,7 @@ namespace GPS.Services.PaiementService
     public interface IPaiementRepository
     {
         void Add(Payment entity);
-        void Delete(Payment entity);
+        void Delete(int id);
         void Update(Payment entity);
         Task<Payment[]> GetPayments(bool includetraces = false, bool includeClients = false);
         Task<Payment> GetPaymentById(int id, bool includetraces = false, bool includeClient = false);

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GPS.Services.TraceServices
 {
-    public interface ITracerepository
+    public interface ITraceRepository
     {
         void Add(Trace entity);
         void Delete(Trace entity);

@@ -27,9 +27,10 @@ namespace GPS.Services.PaiementService
             _context.SaveChanges();
         }
 
-        public void Delete(Payment entity)
+        public void Delete(int id)
         {
-            _context.Payments.Remove(entity);
+            _context.Payments.Remove(_context.Payments.Find(id));
+            _context.SaveChanges();
         }
 
         public async Task<Payment> GetPaymentById(int id, bool includetraces = false, bool includeClient = false)
