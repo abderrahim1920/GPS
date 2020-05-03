@@ -14,5 +14,6 @@ namespace GPS.Services.PaiementService
         void Update(Payment entity);
         Task<Payment[]> GetPayments(bool includetraces = false, bool includeClients = false);
         Task<Payment> GetPaymentById(int id, bool includetraces = false, bool includeClient = false);
+       
     }
 }

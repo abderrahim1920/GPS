@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using FastMember;
 using GPS.DTO;
 using GPS.DTO.GridData;
 using GPS.Properties;
@@ -19,31 +20,32 @@ namespace GPS.Forms
     {
         private readonly IMapper _mapper;
         private readonly IPaiementRepository _paiementRepository;
+        DataTable dt;
+        List<DataDTO> dataList;
+
         public PaymentForm(IMapper mapper, IPaiementRepository paiementRepository)
         {
             InitializeComponent();
             _mapper = mapper;
             _paiementRepository = paiementRepository;
-            InitializeGrid();
         }
 
-        private void InitializeGrid()
+        private void PaymentForm_Load(object sender, EventArgs e)
         {
             var x = _paiementRepository.GetPayments(true, true).Result;
-
             var mapped = _mapper.Map<PaymentDTO[]>(x);
-
-            var m = _mapper.Map<DataDTO>(mapped[0]);
-            var length = mapped.Length;
-            List<DataDTO> dataList = new List<DataDTO>();
-
+            dataList = new List<DataDTO>();
             for (int i = 0; i < mapped.Length; i++)
             {
                 var data = _mapper.Map<DataDTO>(mapped[i]);
                 dataList.Add(data);
             }
-            var j = dataList;
-            PaymentsGrid.DataSource = dataList;
+            dt = new DataTable();
+            using (var reader = ObjectReader.Create(dataList))
+            {
+                dt.Load(reader);
+            }
+            PaymentsGrid.DataSource = dt;
             PaymentsGrid.Columns[0].Visible = false;
             PaymentsGrid.Columns[5].Visible = false;
             PaymentsGrid.Columns[10].Visible = false;
@@ -55,15 +57,12 @@ namespace GPS.Forms
             PaymentsGrid.Columns[9].HeaderText = "Date paiement";
             PaymentsGrid.Columns[11].HeaderText = "Payé";
             PaymentsGrid.Columns[11].ReadOnly = true;
-            
             foreach (DataGridViewColumn col in PaymentsGrid.Columns)
             {
                 col.HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-               
                 col.HeaderCell.Style.Font = new Font("Arial", 16F, FontStyle.Bold, GraphicsUnit.Pixel);
             }
             LoadColumns();
-           
         }
 
         private void LoadColumns()
@@ -100,6 +99,13 @@ namespace GPS.Forms
             }
         }
 
+        private void searchTextBox_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = searchTextBox.Text;
+            var columnName = "Name";
+            dt.DefaultView.RowFilter = string.Format("{0} LIKE '%{1}%'", columnName, searchValue);
+        }
 
+       
     }
 }
